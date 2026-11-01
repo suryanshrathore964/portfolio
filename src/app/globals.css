@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+:root {
+  --canvas-bg: #ffffff;
+  --canvas-subtle: #f9fafb;
+  --border-technical: #e5e7eb;
+  --border-muted: #e2e8f0;
+  --cobalt: #2563eb;
+  --cobalt-dark: #1d4ed8;
+  --cobalt-light: #3b82f6;
+  --slate-primary: #0f172a;
+  --slate-secondary: #334155;
+  --slate-muted: #64748b;
+  --slate-tag: #475569;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--canvas-bg);
+  color: var(--slate-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  background-color: var(--canvas-bg);
+  color: var(--slate-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  selection-background-color: #2563eb;
+  selection-color: #ffffff;
+}
+
+::selection {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Technical Architect Grid */
+.technical-grid {
+  background-image: 
+    linear-gradient(to right, rgba(229, 231, 235, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 231, 235, 0.6) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.technical-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(229, 231, 235, 0.8) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 231, 235, 0.8) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.technical-dots {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Engineering Crosshair */
+.crosshair {
+  position: relative;
+}
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.crosshair-tl::before {
+  top: -1px;
+  left: -5px;
+  width: 10px;
+  height: 1px;
+  background: #2563eb;
+}
+.crosshair-tl::after {
+  top: -5px;
+  left: -1px;
+  width: 1px;
+  height: 10px;
+  background: #2563eb;
+}
+.crosshair-tr::before {
+  top: -1px;
+  right: -5px;
+  width: 10px;
+  height: 1px;
+  background: #2563eb;
+}
+.crosshair-tr::after {
+  top: -5px;
+  right: -1px;
+  width: 1px;
+  height: 10px;
+  background: #2563eb;
+}
+.crosshair-bl::before {
+  bottom: -1px;
+  left: -5px;
+  width: 10px;
+  height: 1px;
+  background: #2563eb;
+}
+.crosshair-bl::after {
+  bottom: -5px;
+  left: -1px;
+  width: 1px;
+  height: 10px;
+  background: #2563eb;
+}
+.crosshair-br::before {
+  bottom: -1px;
+  right: -5px;
+  width: 10px;
+  height: 1px;
+  background: #2563eb;
+}
+.crosshair-br::after {
+  bottom: -5px;
+  right: -1px;
+  width: 1px;
+  height: 10px;
+  background: #2563eb;
+}
+
+/* Monospace Blueprint Typography */
+.font-mono-tech {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism surfaces */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+}
+
+.glass-surface-subtle {
+  background: rgba(249, 250, 251, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e5e7eb;
+}
+
+/* Smooth pulse animations */
+@keyframes technicalPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+}
+
+.animate-tech-pulse {
+  animation: technicalPulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom crisp scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-left: 1px solid #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
