@@ -49,7 +49,7 @@ export default function ContactTerminal() {
   };
 
   const handleCopyPhone = () => {
-    navigator.clipboard?.writeText("+918349488439");
+    navigator.clipboard?.writeText("+919424574369");
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
   };
@@ -313,36 +313,49 @@ export default function ContactTerminal() {
               </div>
             </div>
 
-            {/* Direct Phone Link Card with Valid tel: Protocol (Task 5 Bug Fix) */}
+            {/* Direct Phone & WhatsApp Link Card */}
             <div className="p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-sm relative group hover:border-blue-300 transition-all">
               <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1">
-                TELEPHONE / WHATSAPP URGENT
+                TELEPHONE / WHATSAPP DIRECT
               </div>
-              <div className="flex items-center justify-between gap-2 mt-1">
+              <div className="flex flex-wrap items-center justify-between gap-2 mt-1">
                 <a
-                  href="tel:+918349488439"
+                  href="tel:+919424574369"
                   className="flex items-center gap-2 font-mono text-xs sm:text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate"
                 >
                   <Phone className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  <span className="truncate">+91 83494 88439</span>
+                  <span className="truncate">+91 94245 74369</span>
                 </a>
-                <button
-                  onClick={handleCopyPhone}
-                  className="px-2.5 py-1.5 rounded-md border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 text-slate-700 font-mono text-xs flex items-center gap-1 transition-colors flex-shrink-0 active:scale-95"
-                  title="Copy phone number"
-                >
-                  {copiedPhone ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700 font-semibold text-[11px]">Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5 text-slate-500" />
-                      <span className="text-[11px]">Copy</span>
-                    </>
-                  )}
-                </button>
+
+                <div className="flex items-center gap-1.5 flex-shrink-0">
+                  <a
+                    href="https://wa.me/919424574369"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-md border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-mono text-[11px] font-semibold flex items-center gap-1 transition-colors active:scale-95"
+                    title="Direct WhatsApp Chat"
+                  >
+                    <span>WhatsApp ↗</span>
+                  </a>
+
+                  <button
+                    onClick={handleCopyPhone}
+                    className="px-2.5 py-1.5 rounded-md border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 text-slate-700 font-mono text-xs flex items-center gap-1 transition-colors active:scale-95"
+                    title="Copy phone number"
+                  >
+                    {copiedPhone ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                        <span className="text-emerald-700 font-semibold text-[11px]">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 text-slate-500" />
+                        <span className="text-[11px]">Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
 

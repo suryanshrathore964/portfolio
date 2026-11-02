@@ -22,8 +22,9 @@ export const siteConfig = {
 
   contact: {
     email: "suryanshrathore964@gmail.com",
-    phone: "+918349488439",
-    phoneDisplay: "+91 83494 88439",
+    phone: "+919424574369",
+    phoneDisplay: "+91 94245 74369",
+    whatsappUrl: "https://wa.me/919424574369",
     timeZone: "IST (UTC+05:30)",
     workStatus: "Open to Full-time, Internships & Architecture Advisory",
   },
