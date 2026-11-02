@@ -479,6 +479,10 @@ export default function ProjectsSection() {
                         <span className="text-[11px] sm:text-xs">
                           Live instance monitored on Render with SSL certification & simulated health probes.
                         </span>
+                      ) : project.id === "findtech-recommendation" ? (
+                        <span className="text-[11px] sm:text-xs">
+                          Live production instance deployed on Vercel with edge routing & active MongoDB Atlas cluster.
+                        </span>
                       ) : (
                         <span className="text-[11px] sm:text-xs">
                           Decoupled microservice architecture designed for seamless horizontal containerization.
