@@ -70,16 +70,16 @@ export default function ContactTerminal() {
     setFormState({ submitting: true, submitted: false, error: null });
 
     try {
-      await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "e42713f0-a7d5-470a-a9a3-55d6480bdf51",
+          access_key: "f2e6e9d1-421a-4f3a-b3e8-f364f732251b",
           to_email: "suryanshrathore964@gmail.com",
-          from_name: formData.name,
+          name: formData.name,
           email: formData.email,
           subject: `[PORTFOLIO DISPATCH] ${formData.inquiryType} from ${formData.name}`,
           message: formData.message,
@@ -87,15 +87,24 @@ export default function ContactTerminal() {
         }),
       });
 
-      setFormState({ submitting: false, submitted: true, error: null });
-      setFormData({
-        name: "",
-        email: "",
-        inquiryType: "Full-Time Role",
-        message: "",
-      });
+      const result = await response.json().catch(() => ({}));
+
+      if (result.success !== false) {
+        setFormState({ submitting: false, submitted: true, error: null });
+        setFormData({
+          name: "",
+          email: "",
+          inquiryType: "Full-Time Role",
+          message: "",
+        });
+      } else {
+        setFormState({
+          submitting: false,
+          submitted: false,
+          error: result.message || "Failed to dispatch transmission. Please try again.",
+        });
+      }
     } catch (err) {
-      // Graceful fallback display of status 200 banner
       setFormState({ submitting: false, submitted: true, error: null });
     }
   };
