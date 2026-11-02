@@ -1,0 +1,8 @@
+# Robots.txt for Suryansh Rathore Portfolio
+# Allow full indexing and crawling across all production search engines
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://suryansh-portfolio.vercel.app/sitemap.xml

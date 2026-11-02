@@ -13,9 +13,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://suryansh-portfolio.vercel.app";
+
 export const metadata = {
-  metadataBase: new URL("https://suryanshrathore.dev"),
-  title: "Suryansh Rathore | Full Stack & AI/ML Engineer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Suryansh Rathore | Full Stack & AI/ML Engineer",
+    template: "%s | Suryansh Rathore",
+  },
   description:
     "Enterprise-grade portfolio of Suryansh Rathore — Full Stack & Applied AI/ML Engineer building high-throughput distributed systems, intelligent recommendation platforms, and clinical healthcare AI.",
   keywords: [
@@ -30,13 +36,17 @@ export const metadata = {
     "SERVE Healthcare",
     "Python",
     "Healthcare AI",
+    "Distributed Systems",
   ],
   authors: [{ name: "Suryansh Rathore", url: "https://github.com/suryanshrathore964" }],
   creator: "Suryansh Rathore",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://suryanshrathore.dev",
+    url: siteUrl,
     title: "Suryansh Rathore | Full Stack & AI/ML Engineer",
     description:
       "Enterprise-grade portfolio of Suryansh Rathore. Specialized in high-throughput full stack applications, recommendation engines, and clinical healthcare AI.",
@@ -51,7 +61,10 @@ export const metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
@@ -66,6 +79,14 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
