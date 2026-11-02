@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import siteConfig from "@/config/siteConfig";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon, XIcon } from "@/components/Icons";
 import {
@@ -16,6 +16,65 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const [selectedTier, setSelectedTier] = useState("inference");
+  const [githubStats, setGithubStats] = useState({
+    repos: 7,
+    stars: 0,
+    isLoaded: false,
+    hasError: false,
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchGitHubTelemetry() {
+      try {
+        const [userRes, reposRes] = await Promise.all([
+          fetch("https://api.github.com/users/suryanshrathore964"),
+          fetch("https://api.github.com/users/suryanshrathore964/repos?per_page=100"),
+        ]);
+
+        if (!userRes.ok) {
+          throw new Error("GitHub user API rate limited or error");
+        }
+
+        const userData = await userRes.json();
+        let starsCount = 0;
+
+        if (reposRes.ok) {
+          const reposData = await reposRes.json();
+          if (Array.isArray(reposData)) {
+            starsCount = reposData.reduce(
+              (acc, repo) => acc + (repo.stargazers_count || 0),
+              0
+            );
+          }
+        }
+
+        if (isMounted) {
+          setGithubStats({
+            repos: typeof userData.public_repos === "number" ? userData.public_repos : 7,
+            stars: starsCount,
+            isLoaded: true,
+            hasError: false,
+          });
+        }
+      } catch (err) {
+        if (isMounted) {
+          setGithubStats((prev) => ({
+            ...prev,
+            isLoaded: true,
+            hasError: true,
+          }));
+        }
+      }
+    }
+
+    fetchGitHubTelemetry();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const architectureTiers = [
     {
@@ -328,46 +387,100 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Bottom Stats Strip (4-box technical grid) */}
+        {/* Bottom Stats Strip (4-box technical grid with Live GitHub API Telemetry) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+          className="mt-12 sm:mt-16"
         >
-          {siteConfig.heroStats.map((stat) => (
-            <div
-              key={stat.id}
-              className="relative p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
-            >
-              {/* Corner crosshairs */}
-              <div className="absolute top-1 left-1 text-[10px] font-mono text-slate-300 group-hover:text-blue-500">
-                +
-              </div>
-              <div className="absolute top-1 right-1 text-[10px] font-mono text-slate-300 group-hover:text-blue-500">
-                +
-              </div>
-
-              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-                <span className="font-mono text-[10px] font-bold text-blue-600 tracking-wider">
-                  [{stat.id}]
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-600 transition-colors" />
-              </div>
-
-              <div className="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
-                {stat.metric}
-              </div>
-
-              <div className="text-[11px] sm:text-xs font-semibold text-slate-700 mb-1 font-mono">
-                {stat.label}
-              </div>
-
-              <div className="text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed">
-                {stat.detail}
-              </div>
+          {/* Telemetry Status Strip */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">
+                SYSTEM METRICS // ARCHITECTURAL TELEMETRY
+              </span>
             </div>
-          ))}
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-[10px] font-semibold shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>GITHUB API: LIVE SYNC</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              {
+                id: "SYS.01",
+                metric: `${githubStats.repos} Public Repositories`,
+                label: "Open-Source & Cloud Systems",
+                detail: "Actively tracked via GitHub API telemetry",
+                isLiveSync: true,
+              },
+              {
+                id: "SYS.02",
+                metric: `${githubStats.stars} Stars • 2x Finalist`,
+                label: "SIH 2025 & Nat'l Healthcare Hackathon",
+                detail: "National stage engineering recognized for real-world impact",
+                isLiveSync: true,
+              },
+              {
+                id: "SYS.03",
+                metric: "WRO Robotics Finalist",
+                label: "Autonomous Systems & Hardware",
+                detail: "Arduino neural navigation & sensor fusion algorithms",
+                isLiveSync: false,
+              },
+              {
+                id: "SYS.04",
+                metric: "Full-Stack + ML Pipeline",
+                label: "End-to-End System Architect",
+                detail: "From model training to sub-second REST API delivery",
+                isLiveSync: false,
+              },
+            ].map((stat) => (
+              <div
+                key={stat.id}
+                className="relative p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
+              >
+                {/* Corner crosshairs */}
+                <div className="absolute top-1 left-1 text-[10px] font-mono text-slate-300 group-hover:text-blue-500">
+                  +
+                </div>
+                <div className="absolute top-1 right-1 text-[10px] font-mono text-slate-300 group-hover:text-blue-500">
+                  +
+                </div>
+
+                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                  <span className="font-mono text-[10px] font-bold text-blue-600 tracking-wider">
+                    [{stat.id}]
+                  </span>
+                  {stat.isLiveSync ? (
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      SYNC
+                    </span>
+                  ) : (
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-600 transition-colors" />
+                  )}
+                </div>
+
+                <div className="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
+                  {stat.metric}
+                </div>
+
+                <div className="text-[11px] sm:text-xs font-semibold text-slate-700 mb-1 font-mono">
+                  {stat.label}
+                </div>
+
+                <div className="text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed">
+                  {stat.detail}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
       </div>

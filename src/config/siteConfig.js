@@ -22,8 +22,8 @@ export const siteConfig = {
 
   contact: {
     email: "suryanshrathore964@gmail.com",
-    phone: "+91-9424574369",
-    phoneDisplay: "+91 94245 74369",
+    phone: "+918349488439",
+    phoneDisplay: "+91 83494 88439",
     timeZone: "IST (UTC+05:30)",
     workStatus: "Open to Full-time, Internships & Architecture Advisory",
   },
@@ -48,9 +48,9 @@ export const siteConfig = {
   heroStats: [
     {
       id: "SYS.01",
-      metric: "3+ Production Systems",
-      label: "Deployed SaaS & Clinical Services",
-      detail: "Live on cloud runtimes with continuous monitoring",
+      metric: "7 Public Repositories",
+      label: "Open-Source & Cloud Systems",
+      detail: "Actively tracked via GitHub API telemetry",
     },
     {
       id: "SYS.02",
@@ -107,6 +107,26 @@ export const siteConfig = {
         { label: "Prediction Accuracy", value: "94.2%" },
         { label: "Clinical Parameters", value: "14 Factors" },
       ],
+      curlSnippet: `curl -X POST "https://nhh-47ti.onrender.com/predict" \\
+     -H "Content-Type: application/json" \\
+     -d '{"systolic_bp": 138, "gait_speed_mps": 0.62, "age": 68}'`,
+      jsonResponse: `{
+  "status": 200,
+  "prediction": "HIGH_FALL_RISK",
+  "probability": 0.874,
+  "latency_ms": 41.2,
+  "recommended_intervention": "Nurse alert triggered (Room 304B)"
+}`,
+      tradeOffs: [
+        {
+          title: "Core Problem & Dataset Imbalance",
+          desc: "Solved class imbalance across synthetic clinical telemetry by tuning decision thresholds in Scikit-learn Logistic Regression, ensuring high sensitivity for high-risk elderly patients.",
+        },
+        {
+          title: "Deployment Bottleneck",
+          desc: "Mitigated Render free-tier cold-start latency through lightweight Flask endpoints and automated keep-alive health probes.",
+        },
+      ],
       achievements: [
         "Machine learning classification model trained on clinical parameters for proactive fall risk prediction.",
         "Real-time monitoring dashboard deployed on Render with high-throughput telemetry endpoints.",
@@ -148,6 +168,30 @@ export const siteConfig = {
         { label: "Hardware Catalog", value: "500+ SKUs" },
         { label: "Weight Multipliers", value: "8 Core Dimensions" },
       ],
+      curlSnippet: `curl -X POST "https://api.findtech.internal/v1/recommend" \\
+     -H "Content-Type: application/json" \\
+     -d '{"budget_max": 85000, "workload": "ML_TRAINING", "min_ram_gb": 16}'`,
+      jsonResponse: `{
+  "status": 200,
+  "matches_count": 3,
+  "top_recommendation": {
+    "model": "ThinkPad P16s Gen 2",
+    "similarity_score": 0.962,
+    "price_inr": 82990,
+    "specs": "Ryzen 7 Pro, 32GB LPDDR5, 1TB NVMe"
+  },
+  "latency_ms": 178
+}`,
+      tradeOffs: [
+        {
+          title: "Why FastAPI over Django?",
+          desc: "Selected FastAPI for asynchronous non-blocking I/O and native Pydantic validation, reducing hardware spec filtering latency to sub-200ms with a fraction of the memory footprint.",
+        },
+        {
+          title: "Vector Matching",
+          desc: "Implemented multidimensional similarity scoring across 8 hardware parameters rather than simple SQL filtering.",
+        },
+      ],
       achievements: [
         "Sub-second hardware filtering and comparative matching algorithm using multidimensional similarity scoring.",
         "Decoupled full-stack architecture with secure authentication and dynamic comparison matrix.",
@@ -188,6 +232,27 @@ export const siteConfig = {
         { label: "Cost Reduction", value: "Up to 80%" },
         { label: "Salt Accuracy", value: "98.5% Cross-Verified" },
         { label: "Database Coverage", value: "12,000+ Formulations" },
+      ],
+      curlSnippet: `curl -X POST "https://api.serve-health.internal/v1/substitute" \\
+     -H "Content-Type: application/json" \\
+     -d '{"salt_name": "Paracetamol 650mg", "max_cost_inr": 30}'`,
+      jsonResponse: `{
+  "status": 200,
+  "salt": "Paracetamol 650mg",
+  "original_brand_cost": 34.0,
+  "generic_substitute": "Jan Aushadhi Paracetamol 650",
+  "generic_cost": 6.8,
+  "patient_savings_percent": 80.0
+}`,
+      tradeOffs: [
+        {
+          title: "Compliance & Entity Extraction",
+          desc: "Decoupled OCR ingestion from dosage extraction models to maintain high generic drug matching accuracy against verified chemical salt catalogs.",
+        },
+        {
+          title: "Database Indexing & Formulation Lookup",
+          desc: "Indexed over 12,000 active formulations with sub-100ms lookup to guarantee immediate pharmaceutical price differential insights.",
+        },
       ],
       achievements: [
         "Intelligent prescription analysis to surface low-cost verified generic medicine substitutes without compromising efficacy.",
