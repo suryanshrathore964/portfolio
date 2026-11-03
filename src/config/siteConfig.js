@@ -75,9 +75,9 @@ export const siteConfig = {
 
   projects: [
     {
-      id: "techmax-fall-risk",
-      title: "TechMax: Intelligent Patient Fall Risk Prediction System",
-      shortTitle: "TechMax Clinical Fall Risk AI",
+      id: "techmechs-fall-risk",
+      title: "TECHMechs: Intelligent Patient Fall Risk Prediction System",
+      shortTitle: "TECHMechs Clinical Fall Risk AI",
       category: "ai-healthcare",
       badge: "National Healthcare Hackathon 2026 Winner/Finalist",
       badgeType: "featured",
@@ -402,9 +402,9 @@ export const siteConfig = {
       role: "Lead Full Stack & Machine Learning Engineer",
       badge: "NHH 2026 WINNER / FINALIST",
       scope:
-        "Deployed the TechMax clinical fall risk prediction system (live on Render); actively developing the SERVE accessible medicine platform with OCR prescription pipelines.",
+        "Deployed the TECHMechs clinical fall risk prediction system (live on Render); actively developing the SERVE accessible medicine platform with OCR prescription pipelines.",
       deliverables: [
-        "Production deployment of TechMax Patient Fall Risk System with live telemetry",
+        "Production deployment of TECHMechs Patient Fall Risk System with live telemetry",
         "Engineering SERVE generic medicine matching engine with OCR extraction",
         "Focusing on high-throughput healthcare inference with clinical safety guarantees",
       ],

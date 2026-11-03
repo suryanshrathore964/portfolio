@@ -18,7 +18,7 @@ export default function SkillsMatrix() {
   const [activeSkill, setActiveSkill] = useState("Python");
 
   const skillContexts = {
-    Python: "Primary language for ML inference (TechMax), Flask/FastAPI microservices, and clinical data pipelines.",
+    Python: "Primary language for ML inference (TECHMechs), Flask/FastAPI microservices, and clinical data pipelines.",
     "C++": "Engineered autonomous obstacle-avoidance firmware and neural navigation at World Robot Olympiad (WRO).",
     C: "Foundational systems programming, memory safety principles, and algorithmic data structures.",
     Java: "Object-oriented software design, enterprise algorithmic architectures, and academic computer science.",
@@ -30,7 +30,7 @@ export default function SkillsMatrix() {
     "Framer Motion": "Micro-animations, layout transitions, and high-framerate interactive physics.",
     "Next.js": "App Router architecture, server components, SEO optimization, and static/SSR hydration.",
     FastAPI: "Asynchronous backend microservices, automatic OpenAPI documentation, and Pydantic validation.",
-    Flask: "High-throughput lightweight inference microservice powering TechMax on Render cloud.",
+    Flask: "High-throughput lightweight inference microservice powering TECHMechs on Render cloud.",
     "REST APIs": "Stateless endpoint design, JSON envelope standards, and HTTP error semantics.",
     "JWT Authentication": "Secure token generation, stateless session handling, and role-based route guards.",
     AsyncIO: "Concurrent request multiplexing and non-blocking I/O for high-QPS telemetry.",

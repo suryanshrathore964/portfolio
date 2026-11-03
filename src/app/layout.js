@@ -31,7 +31,7 @@ export const metadata = {
     "Machine Learning",
     "FastAPI",
     "Next.js",
-    "TechMax",
+    "TECHMechs",
     "FINDtech",
     "SERVE Healthcare",
     "Python",

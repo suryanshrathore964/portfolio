@@ -21,7 +21,7 @@ export default function Home() {
         {/* //01. Architecture: High-Throughput Distributed Architecture */}
         <ArchitectureSection />
 
-        {/* //02. Systems & Projects: Multi-Tab Showcase with Live TechMax Integration */}
+        {/* //02. Systems & Projects: Multi-Tab Showcase with Live TECHMechs Integration */}
         <ProjectsSection />
 
         {/* //03. Skills Matrix: Interactive Pipelines & Technical Radar */}

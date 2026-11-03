@@ -39,7 +39,7 @@
 │   │   ├── Navbar.jsx         # Frosted glass fixed header with monogram, links, resume & mobile drawer
 │   │   ├── HeroSection.jsx    # Split layout: Pitch, status, social pills, 3D/Isometric blueprint node diagram
 │   │   ├── ArchitectureSection.jsx # //01. Distributed systems architecture & pipeline latency simulator
-│   │   ├── ProjectsSection.jsx # //02. Multi-tab showcase featuring live TechMax integration
+│   │   ├── ProjectsSection.jsx # //02. Multi-tab showcase featuring live TECHMechs integration
 │   │   ├── SkillsMatrix.jsx   # //03. 5 Interconnected pipeline branches + SVG Radar distribution
 │   │   ├── RoadmapSection.jsx # //04. Chronological engineering track with expandable deliverables
 │   │   ├── ContactTerminal.jsx# //05. Dispatch Terminal with one-click email copy & secure submission
@@ -55,7 +55,7 @@
 
 ## 🚀 Systems Showcase Highlights
 
-### 1. TechMax: Patient Fall Risk Prediction System
+### 1. TECHMechs: Patient Fall Risk Prediction System
 - **Status**: Live on Render (`https://nhh-47ti.onrender.com`)
 - **Recognition**: National Healthcare Hackathon 2026 Winner/Finalist
 - **Pipeline**: Synthetic Clinical Ingestion ➔ Scikit-learn Classifier ➔ Flask Microservice ➔ Real-time Chart.js Telemetry

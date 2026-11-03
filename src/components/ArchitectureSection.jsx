@@ -21,7 +21,7 @@ export default function ArchitectureSection() {
     clinical: {
       id: "clinical",
       title: "Clinical Patient Telemetry & Fall Prediction Pipeline",
-      system: "TechMax Fall Risk AI",
+      system: "TECHMechs Fall Risk AI",
       steps: [
         { code: "STAGE.01", name: "Clinical Ingestion", desc: "Age, blood pressure, mobility markers streamed via REST" },
         { code: "STAGE.02", name: "Pydantic Sanitizer", desc: "Strict type coercion, missing vital interpolation" },

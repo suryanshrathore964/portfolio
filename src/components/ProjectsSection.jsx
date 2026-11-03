@@ -144,7 +144,7 @@ export default function ProjectsSection() {
         {/* Projects Cards List */}
         <div className="mt-8 sm:mt-12 space-y-8 sm:space-y-12">
           {filteredProjects.map((project, index) => {
-            const isTechMax = project.id === "techmax-fall-risk";
+            const isTechMechs = project.id === "techmechs-fall-risk";
 
             return (
               <motion.div
@@ -475,7 +475,7 @@ export default function ProjectsSection() {
                         <ShieldCheck className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
                         <span>RUNTIME INTEGRITY</span>
                       </div>
-                      {isTechMax ? (
+                      {isTechMechs ? (
                         <span className="text-[11px] sm:text-xs">
                           Live instance monitored on Render with SSL certification & simulated health probes.
                         </span>
